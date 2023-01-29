@@ -80,7 +80,7 @@ def ordenaMatrizB(B):
       C = np.delete(C, 0, axis = 1)
       i+=1
     while (len(C) > posto):
-      C = np.delete(C, len(A)-1, axis = 0)
+      C = np.delete(C, len(C)-1, axis = 0)
     B = C.transpose()
 
     IB=np.identity(len(B), dtype=int)
@@ -114,10 +114,10 @@ def ordenaMatrizB(B):
           i=i+1
 
     # Este bloco irá adicionar a ultima linha de Q
-    novoVetor = np.zeros(len(M[0]), dtype=int)
-    for i in range(len(M[0])):
-      if(M[:,i].sum()<2):
+    novoVetor = np.zeros(len(B[0]), dtype=int)
+    for i in range(len(B[0])):
+      if(B[:,i].sum()<2):
         novoVetor[i] = 1
     aux = np.array([novoVetor], dtype=int)
-    Q = np.concatenate((N,aux))
+    Q = np.concatenate((B,aux))
     return Q, variaveis
